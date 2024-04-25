@@ -22,6 +22,18 @@
                         </div>
 
                         <div class="mb-3 ">
+                            <label for="user" class="form-label fw-bold">User</label>
+                            <select class="form-select" name="user_id" aria-label="Default select example">
+                                <option selected>Choose</option>
+                                
+                                    <option value="1">user</option>
+                                    <option value="2">admin</option>
+                                    
+                                                              
+                            </select>
+                        </div>
+
+                        <div class="mb-3 ">
                             <label for="category" class="form-label fw-bold">Category</label>
                             <select class="form-select" name="category_id" aria-label="Default select example">
                                 <option selected>Choose Category</option>
