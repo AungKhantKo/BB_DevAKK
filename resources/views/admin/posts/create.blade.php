@@ -13,40 +13,73 @@
                     <div class="offset-lg-1 col-lg-10">
                         <div class="mb-3 mt-3">
                             <label for="title" class="form-label fw-bold">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="">
+                            <input type="text" class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}" name="title" id="title" placeholder="">
+                            
+                            @if($errors->has('title'))
+                                <div>
+                                    {{$errors->first('title')}}
+                                </div>
+                            @endif
+
                         </div>
                         
                         <div class="mb-3">
                             <label for="image" class="form-label fw-bold">Image</label>
-                            <input class="form-control" accept="image/*" type="file" name="image" id="image">
+                            <input class="form-control {{$errors->has('image') ? 'is-invalid' : ''}}" accept="image/*" type="file" name="image" id="image">
+
+                            @if($errors->has('image'))
+                                <div>
+                                    {{$errors->first('image')}}
+                                </div>
+                            @endif
+
                         </div>
 
                         <div class="mb-3 ">
                             <label for="user" class="form-label fw-bold">User</label>
-                            <select class="form-select" name="user_id" aria-label="Default select example">
-                                <option selected>Choose</option>
+                            <select class="form-select {{$errors->has('user_id') ? 'is-invalid' : ''}}" name="user_id" aria-label="Default select example">
+                                <option value="">Choose</option>
                                 
                                     <option value="1">user</option>
                                     <option value="2">admin</option>
-                                    
-                                                              
+                                                                      
                             </select>
+
+                            @if($errors->has('user_id'))
+                                <div>
+                                    {{$errors->first('user_id')}}
+                                </div>
+                            @endif
+
                         </div>
 
                         <div class="mb-3 ">
                             <label for="category" class="form-label fw-bold">Category</label>
-                            <select class="form-select" name="category_id" aria-label="Default select example">
-                                <option selected>Choose Category</option>
+                            <select class="form-select {{$errors->has('category_id') ? 'is-invalid' : ''}}" name="category_id" aria-label="Default select example">
+                                <option value="">Choose Category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                    
+                                    <option value="{{$category->id}}">{{$category->name}}</option>             
                                 @endforeach                                
                             </select>
+
+                            @if($errors->has('category_id'))
+                                <div>
+                                    {{$errors->first('category_id')}}
+                                </div>
+                            @endif
+
                         </div>
 
                         <div class="mb-3 ">
                             <label for="description" class="form-label fw-bold">Description</label>
-                            <textarea class="form-control" placeholder="" name="description" id="description"></textarea>
+                            <textarea class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" placeholder="" name="description" id="description"></textarea>
+
+                            @if($errors->has('description'))
+                                <div>
+                                    {{$errors->first('description')}}
+                                </div>
+                            @endif
+
                         </div>
                         
                         <div class="mb-3">
