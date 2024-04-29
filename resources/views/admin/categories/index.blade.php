@@ -32,7 +32,10 @@
                                  <tr>
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->name}}</td>
-                                    <td></td>
+                                    <td>
+                                        <a href="{{route('backend.categories.edit',$category->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                        <button class="btn btn-sm btn-danger" type="button">Delete</button>
+                                    </td>
                                  </tr>
                                 @endforeach
                             </tbody>

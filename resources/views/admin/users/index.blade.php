@@ -39,7 +39,10 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->password}}</td>
                                     <td>{{$user->role}}</td>
-                                    <td></td>
+                                    <td>
+                                        <a href="{{route('backend.users.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

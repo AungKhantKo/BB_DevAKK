@@ -60,7 +60,12 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // echo $id;
+        $categories = Category::all();
+        // $users = User::all();
+        $post = Post::find($id);
+        // dd($post);
+        return view('admin.posts.edit',compact('categories','post'));
     }
 
     /**

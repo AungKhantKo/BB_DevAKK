@@ -33,7 +33,10 @@
                                         <tr>
                                             <td>{{$post->title}}</td>
                                             <td>{{$post->image}}</td>
-                                            <td></td>
+                                            <td>
+                                                <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                                <button class="btn btn-sm btn-danger" type="button">Delete</button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
