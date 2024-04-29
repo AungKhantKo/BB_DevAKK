@@ -81,7 +81,10 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // echo $id;
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('backend.posts.index');
     }
 }
 

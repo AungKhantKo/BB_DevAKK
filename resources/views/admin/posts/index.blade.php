@@ -13,7 +13,7 @@
                                 DataTable Example
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Title</th>
@@ -28,14 +28,14 @@
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
+                                    <tbody id="post_tbody">
                                         @foreach($posts as $post)
                                         <tr>
                                             <td>{{$post->title}}</td>
                                             <td>{{$post->image}}</td>
                                             <td>
                                                 <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
-                                                <button class="btn btn-sm btn-danger" type="button">Delete</button>
+                                                <button class="btn btn-sm btn-danger delete" type="button" data-postid="{{$post->id}}">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -44,4 +44,44 @@
                             </div>
                         </div>
                 </div>
+
+                <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-danger text-light">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure to delete?</p>
+                                </div>
+                                <div class="modal-footer">                                    
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+                                    <form action="" method="post" id="deleteForm">
+                                        {{csrf_field()}}
+                                        {{method_field('delete')}}
+                                    <button type="submit" class="btn btn-danger">Yes</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+@endsection
+
+@section('script')
+
+    <script>
+            $(document).ready(function(){
+                $('#post_tbody').on('click','.delete',function(){
+                    let id = $(this).data('postid');
+                    // console.log(id);
+                    $('#deleteModal').modal('show');
+                    $('#deleteForm').prop('action','posts/'+id);
+                })
+            })
+    </script>
+
 @endsection
