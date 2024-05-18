@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\PostUpdateRequest;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
@@ -71,9 +72,26 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostUpdateRequest $request, string $id)
     {
-        //
+        // dd($request);
+        // echo $id;
+        $post = Post::find($id);
+        $post->update($request->all());
+
+        if($request->hasFile('new_image')){
+            // file upload
+            $fileName = time().'.'.$request->new_image->extension();
+
+            $upload = $request->new_image->move(public_path('images/'), $fileName);
+            if($upload) {
+                $post->image = "/images/".$fileName;
+            }
+        }else{
+            $post->image = $request->old_image;
+        }
+        $post->save();
+        return redirect()->route('backend.posts.index');
     }
 
     /**

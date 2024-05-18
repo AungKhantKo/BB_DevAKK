@@ -2,13 +2,14 @@
 @section('content')
 <div class="container-fluid px-4">
             <div class="my-4">
-                <h3 class="my-4 d-inline">Categories Create</h3>
+                <h3 class="my-4 d-inline">Categories Edit</h3>
                 <a href="{{route('backend.categories.index')}}" class="btn btn-danger float-end">Cancel</a>
             </div>
 
         <div class="container-md">
-            <form action="{{route('backend.categories.store')}}" method="POST" class="border">
+            <form action="{{route('backend.categories.update',$category->id)}}" method="POST" class="border">
                 {{csrf_field()}}
+                {{method_field('put')}}
                 <div class="row py-2">
                     <div class="offset-lg-1 col-lg-10">
                         <div class="mb-3 mt-3">

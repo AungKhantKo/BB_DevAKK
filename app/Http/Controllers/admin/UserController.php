@@ -58,9 +58,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        // dd($request);
+        // echo $id;
+        $user = User::find($id);
+        $user->update($request->all());
+        $user->save();
+        return redirect()->route('backend.users.index');
     }
 
     /**
