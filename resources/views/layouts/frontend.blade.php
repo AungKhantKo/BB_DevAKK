@@ -23,6 +23,30 @@
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+
+                        @guest
+                        <a href="/login" class="btn btn-light mx-3">Login</a>
+                        <a href="/register" class="btn btn-danger">Register</a>
+                        @else
+                            <div class="nav-item dropdown mx-3">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{Auth::user()->name}}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if(Auth::user()->role == "user")
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    @else
+                                    <li><a class="dropdown-item" href="{{route('backend.dashboard')}}">Admin Panel</a></li>
+                                    @endif
+                                    <li>
+                                        <form action="{{route('logout')}}" method="POST" class="dropdown-item">
+                                            @csrf
+                                            <button type="submit" class="btn">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        @endif
                     </ul>
                 </div>
             </div>
