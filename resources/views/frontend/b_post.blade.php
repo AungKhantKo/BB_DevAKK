@@ -16,7 +16,7 @@
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$post->category_id}}</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="/">{{$post->category->name}}</a>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$post->category_id}}</a>
                         </header>
                         <!-- Preview image figure-->

@@ -16,14 +16,18 @@
                                 <table id="" class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>Username</th>
                                             <th>Title</th>
+                                            <th>Category Name</th>
                                             <th>Image</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Username</th>
                                             <th>Title</th>
+                                            <th>Category Name</th>
                                             <th>Image</th>
                                             <th>Action</th>
                                         </tr>
@@ -31,7 +35,9 @@
                                     <tbody id="post_tbody">
                                         @foreach($posts as $post)
                                         <tr>
+                                            <td>{{$post->user->name}}</td>
                                             <td>{{$post->title}}</td>
+                                            <td>{{$post->category->name}}</td>
                                             <td>{{$post->image}}</td>
                                             <td>
                                                 <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
